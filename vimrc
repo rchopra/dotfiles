@@ -1,5 +1,8 @@
 " Started from PeepCode basic configuration and tweaked from there 
-" Copy or symlink to ~/.vimrc or ~/_vimrc.
+
+" First, get pathogen set up
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
 set nocompatible                  " Must come first because it changes other options.
 
@@ -47,8 +50,9 @@ set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-" Or use vividchalk
-colorscheme topfunky-light
+" Set color scheme
+set background=dark
+colorscheme solarized 
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
