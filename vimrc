@@ -25,7 +25,6 @@ set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
 set relativenumber                " Relative line numbers.
-set number                        " Show current line number in relative mode.
 set ruler                         " Show cursor position.
 
 set incsearch                     " Highlight matches as you type.
