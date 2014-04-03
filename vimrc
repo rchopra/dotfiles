@@ -25,6 +25,7 @@ set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
 set relativenumber                " Relative line numbers.
+set number                        " Absolute line number on current line.
 set ruler                         " Show cursor position.
 
 set incsearch                     " Highlight matches as you type.
@@ -47,6 +48,7 @@ set expandtab                    " Use spaces instead of tabs
 
 " Filetypes that require only two spaces for tabs
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType eruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
