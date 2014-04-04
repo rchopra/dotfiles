@@ -58,6 +58,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 " Set color scheme
 set background=dark
+let g:solarized_termtrans = 1
 colorscheme solarized 
 
 " Tab mappings.
