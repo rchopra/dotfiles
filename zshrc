@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# Fix tmux bug
+DISABLE_AUTO_TITLE=true
+
 export EDITOR="vim"
 bindkey -v
 
