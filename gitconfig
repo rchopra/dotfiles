@@ -1,0 +1,13 @@
+[user]
+	email = rqchopra@gmail.com
+	name = Rishi Chopra
+[core]
+	excludesfile = ~/.cvsignore
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty-format:'%h %a%d | %s%d [%a%n]' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
