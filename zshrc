@@ -1,3 +1,9 @@
+# Set custom prompt
+setopt PROMPT_SUBST
+autoload -U promptinit
+promptinit
+prompt grb
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -18,7 +24,7 @@ setopt AUTO_CD
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"

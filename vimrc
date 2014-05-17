@@ -57,9 +57,13 @@ set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Set color scheme
+" set background=dark
+" let g:solarized_termtrans = 1
+" colorscheme solarized 
+
+set t_Co=256 " 256 colors
 set background=dark
-let g:solarized_termtrans = 1
-colorscheme solarized 
+color grb256
 
 " Map leader to space
 let mapleader=" "
