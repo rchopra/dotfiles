@@ -1,5 +1,5 @@
 # Set custom prompt
-setopt PROMPT_SUBST
+setopt promptsubst
 autoload -U promptinit
 promptinit
 prompt grb
