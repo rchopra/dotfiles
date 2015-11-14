@@ -1,11 +1,12 @@
 # Set custom prompt
-setopt promptsubst
+# setopt promptsubst
 autoload -U promptinit
 promptinit
-prompt grb
+prompt walters
+# prompt grb
 
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# ZSH=$HOME/.oh-my-zsh
 
 # Fix tmux bug
 DISABLE_AUTO_TITLE=true
@@ -77,7 +78,7 @@ alias get='git '
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
