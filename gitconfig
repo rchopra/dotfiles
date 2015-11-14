@@ -1,15 +1,29 @@
 [user]
 	email = rqchopra@gmail.com
 	name = Rishi Chopra
+
+[diff]
+[color]
+    ui = auto
+
 [core]
 	excludesfile = ~/.cvsignore
 	autocrlf = input
 	safecrlf = true
+
 [alias]
     co = checkout
     ci = commit
     st = status
-    br = branch
+    b = branch
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
     type = cat-file -t
     dump = cat-file -p
+
+    l = "!source ~/.githelpers && pretty_git_log"
+    la = !git l --all
+    r = !git l -30
+    ra = !git r --all
+
+[merge]
+    tool = vimdiff

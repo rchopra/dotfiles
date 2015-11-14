@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/rishi/rails_studio/flix/spec/support'
 let g:netrw_dirhist_2='/Users/rishi/Dropbox/Courses/Engineering SaaS/Homework/ruby-calisthenics'
 let g:netrw_dirhist_3='/Users/rishi/dotfiles/zsh/func'
+let g:netrw_dirhist_4='/Users/rishi/.oh-my-zsh'
