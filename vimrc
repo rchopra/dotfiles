@@ -97,3 +97,12 @@ map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
+
+" Split navigation
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w><c-h>
+
+set splitbelow
+set splitright
