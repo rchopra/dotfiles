@@ -1,9 +1,21 @@
 # Set custom prompt
-# setopt promptsubst
+setopt PROMPT_SUBST 
 autoload -U promptinit
 promptinit
-prompt walters
-# prompt grb
+prompt grb
+
+# Initialize completion
+autoload -U compinit
+compinit
+
+# Add paths
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin"
+
+# Colorize terminal
+alias ls='ls -G'
+alias ll='ls -lG'
+alias la='ls -lahG'
+export GREP_OPTIONS="--color"
 
 # Path to your oh-my-zsh configuration.
 # ZSH=$HOME/.oh-my-zsh
@@ -80,9 +92,7 @@ plugins=(git)
 
 # source $ZSH/oh-my-zsh.sh
 
-# User configuration
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
