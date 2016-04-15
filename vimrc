@@ -65,9 +65,6 @@ set t_Co=256 " 256 colors
 set background=dark
 color grb256
 
-" Map leader to comma
-let mapleader=","
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
@@ -85,7 +82,7 @@ inoremap <s-tab> <c-n>
 
 " Fast saving
 nnoremap <leader>w :w!<cr>
-inoremap jk <esc>:w!<cr>
+inoremap jj <esc>:w!<cr>
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
