@@ -9,7 +9,7 @@ autoload -U compinit
 compinit
 
 # Add paths
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/usr/local/share/scala/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/usr/local/share/scala/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin"
 
 # Colorize terminal
 alias ls='ls -G'
