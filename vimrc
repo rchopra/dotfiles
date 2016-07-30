@@ -59,11 +59,11 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 " Set color scheme
 " set background=dark
 " let g:solarized_termtrans = 1
-" colorscheme solarized 
+colorscheme Tomorrow-Night
 
-set t_Co=256 " 256 colors
-set background=dark
-color grb256
+" set t_Co=256 " 256 colors
+" set background=dark
+" color grb256
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -82,24 +82,36 @@ inoremap <s-tab> <c-n>
 
 " Fast saving
 nnoremap <leader>w :w!<cr>
-inoremap jj <esc>:w!<cr>
+" inoremap jj <esc>:w!<cr>
 
 " Tab mappings.
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove
+" map <leader>tt :tabnew<cr>
+" map <leader>te :tabedit
+" map <leader>tc :tabclose<cr>
+" map <leader>to :tabonly<cr>
+" map <leader>tn :tabnext<cr>
+" map <leader>tp :tabprevious<cr>
+" map <leader>tf :tabfirst<cr>
+" map <leader>tl :tablast<cr>
+" map <leader>tm :tabmove
+
+" NERDTree
+nnoremap <leader>nt :NERDTree<cr>
 
 " Split navigation
 nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
+
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+"Run rspec on current buffer
+nnoremap <leader>r :w\|! rspec % <cr>
+
+" Turn off search highlighting
+nnoremap <silent> <leader>nh :noh<cr>
 
 set splitbelow
 set splitright
