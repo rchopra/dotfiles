@@ -42,6 +42,7 @@ setopt AUTO_CD
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias g='git '
 alias gt='git status '
 alias ga='git add '
 alias gb='git branch '
