@@ -19,6 +19,7 @@
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
     type = cat-file -t
     dump = cat-file -p
+    staged = diff --cached
 
     l = "!source ~/.githelpers && pretty_git_log"
     la = !git l --all
