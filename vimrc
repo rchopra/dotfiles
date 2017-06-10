@@ -24,7 +24,6 @@ set wildmode=list:longest         " Complete files like a shell.
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
-set relativenumber                " Relative line numbers.
 set number                        " Absolute line number on current line.
 set ruler                         " Show cursor position.
 
