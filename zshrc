@@ -109,5 +109,9 @@ plugins=(git)
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
