@@ -59,7 +59,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 " Set color scheme
 " set background=dark
 " let g:solarized_termtrans = 1
-colorscheme Tomorrow-Night
+colorscheme iceberg
 
 " set t_Co=256 " 256 colors
 " set background=dark
