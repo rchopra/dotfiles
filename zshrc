@@ -24,7 +24,7 @@ export GREP_OPTIONS="--color"
 DISABLE_AUTO_TITLE=true
 
 export EDITOR="vim"
-bindkey -v
+bindkey -e
 
 #vi style incremental search
 bindkey '^R' history-incremental-search-backward
