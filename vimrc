@@ -59,7 +59,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 " Set color scheme
 " set background=dark
 " let g:solarized_termtrans = 1
-colorscheme iceberg
+colorscheme base16-eighties
 
 " set t_Co=256 " 256 colors
 " set background=dark
@@ -115,3 +115,9 @@ set splitright
 
 " Vim Hard Time Settings
 let g:hardtime_default_on = 1
+
+" Fix Base16 Theme Colors
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
