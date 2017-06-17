@@ -57,13 +57,6 @@ set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Set color scheme
-" set background=dark
-" let g:solarized_termtrans = 1
-colorscheme base16-eighties
-
-" set t_Co=256 " 256 colors
-" set background=dark
-" color grb256
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -123,5 +116,4 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 " Vim Airline
-let g:airline_theme='base16_eighties'
 let g:airline_powerline_fonts=1
