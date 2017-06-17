@@ -124,11 +124,10 @@ set splitright
 " Vim Hard Time Settings
 let g:hardtime_default_on = 1
 
-" Fix Base16 Theme Colors
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-" Vim Airline
-let g:airline_powerline_fonts=1
+" FZF
+set rtp+=/usr/local/opt/fzf
+imap <c-x><c-o> <plug>(fzf-complete-line)
+map <leader>b :Buffers<cr>
+map <leader>f :Files<cr>
+map <leader>g :GFiles<cr>
+map <leader>t :Tags<cr>
