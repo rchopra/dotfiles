@@ -45,6 +45,7 @@ set tabstop=4                    " Global tab width.
 set shiftwidth=4                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
 
+let mapleader=" "
 " Filetypes that require only two spaces for tabs
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType eruby setlocal ts=2 sts=2 sw=2 expandtab
