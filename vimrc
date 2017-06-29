@@ -51,7 +51,6 @@ autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType eruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
