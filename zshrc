@@ -17,6 +17,9 @@ alias ll='ls -lG'
 alias la='ls -lahG'
 export GREP_OPTIONS="--color"
 
+# FZF Options
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
 # Path to your oh-my-zsh configuration.
 # ZSH=$HOME/.oh-my-zsh
 
