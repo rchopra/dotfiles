@@ -125,7 +125,7 @@ set splitbelow
 set splitright
 
 " Vim Hard Time Settings
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 
 " FZF
 set rtp+=/usr/local/opt/fzf
