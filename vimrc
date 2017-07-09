@@ -69,6 +69,9 @@ let g:lightline = {
   \ },
   \ }
 
+" Tmuxline config
+let g:tmuxline_powerline_separators = 0
+
 " Set color scheme
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
