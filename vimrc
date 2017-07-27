@@ -136,3 +136,6 @@ map <leader>b :Buffers<cr>
 map <leader>f :Files<cr>
 map <leader>g :GFiles<cr>
 map <leader>t :Tags<cr>
+
+" vim-jsx
+let g:jsx_ext_required = 0  " Use JSX syntax highlighting on file extensions with .js
