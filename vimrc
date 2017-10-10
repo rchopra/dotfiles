@@ -1,4 +1,4 @@
-" Started from PeepCode basic configuration and tweaked from there 
+" Started from PeepCode basic configuration and tweaked from there
 
 " First, get pathogen set up
 runtime bundle/vim-pathogen/autoload/pathogen.vim
@@ -117,7 +117,7 @@ nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 
-"Remove all trailing whitespace by pressing F5
+"Remove all trailing whitespace by pressing <leader>cw
 nnoremap <leader>cw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Turn off search highlighting
@@ -139,3 +139,6 @@ map <leader>t :Tags<cr>
 
 " vim-jsx
 let g:jsx_ext_required = 0  " Use JSX syntax highlighting on file extensions with .js
+
+" Vimux
+map <leader>rt :call VimuxRunCommand("clear; test_ivy")<CR>
