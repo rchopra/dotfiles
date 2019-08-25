@@ -51,7 +51,6 @@ set tabstop=4                    " Global tab width.
 set shiftwidth=4                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
 
-let mapleader=" "
 " Filetypes that require only two spaces for tabs
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType eruby setlocal ts=2 sts=2 sw=2 expandtab
@@ -139,7 +138,7 @@ let g:hardtime_default_on = 0
 set rtp+=/usr/local/opt/fzf
 imap <c-x><c-o> <plug>(fzf-complete-line)
 map <leader>b :Buffers<cr>
-map <leader>f :Files<cr>
+map <leader>ff :Files<cr>
 map <leader>g :GFiles<cr>
 map <leader>t :Tags<cr>
 
