@@ -1,5 +1,11 @@
 " Started from PeepCode basic configuration and tweaked from there
 
+call plug#begin('~/.vim/plugged')
+Plug 'elmcast/elm-vim'
+Plug 'pgr0ss/vimux-ruby-test'
+Plug 'guns/vim-clojure-static'
+call plug#end()
+
 " First, get pathogen set up
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
@@ -141,4 +147,56 @@ map <leader>t :Tags<cr>
 let g:jsx_ext_required = 0  " Use JSX syntax highlighting on file extensions with .js
 
 " Vimux
-map <leader>rt :call VimuxRunCommand("clear; test_ivy")<CR>
+map <leader>rf :RunRubyFocusedTest<CR>
+map <leader>rc :RunRubyFocusedContext<CR>
+map <leader>rb :RunAllRubyTests<CR>
+map <leader>rl :VimuxRunLastCommand<CR>
+
+" Ale
+let g:ale_fixers = {
+\   'javascript': ['prettier_eslint'],
+\}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+" Neoformatter
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --tab-width\ 4\ --print-width\ 120
+let g:neoformat_try_formatprg = 1
+map <Leader>p :Neoformat<cr>
+
+
+" Custom test functions
+function! TestCurrentReactBuffer()
+    let path = expand('%:p')
+    let filename = substitute(path, "test\.", "", "")
+    execute "!npm test " . path . " -- --coverage --collectCoverageFrom=\'[\"" . filename . "\"]\'"
+endfunction
+
+" Testing in Clojure
+function! TestToplevel() abort
+    "Eval the toplevel clojure form (a deftest) and then test-var the result."
+    normal! ^
+    let line1 = searchpair('(','',')', 'bcrn', g:fireplace#skip)
+    let line2 = searchpair('(','',')', 'rn',
+    g:fireplace#skip)
+    let expr = join(getline(line1, line2), "\n")
+    let var = fireplace#session_eval(expr)
+    let result = fireplace#echo_session_eval("(clojure.test/test-var" . var . ")")
+    return result
+endfunction
+
+au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
+
+" Hot reload code into the JVM
+au Filetype clojure nmap <c-c><c-k> :Require<cr>
+
+" Elm
+let g:elm_jump_to_error = 0
+let g:elm_make_output_file = "elm.js"
+let g:elm_make_show_warnings = 0
+let g:elm_syntastic_show_warnings = 0
+let g:elm_browser_command = ""
+let g:elm_detailed_complete = 0
+let g:elm_format_autosave = 1
+let g:elm_format_fail_silently = 0
+let g:elm_setup_keybindings = 1
