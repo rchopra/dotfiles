@@ -1,201 +1,187 @@
-" Started from PeepCode basic configuration and tweaked from there
+set nocompatible
+syntax on
 
-call plug#begin('~/.vim/plugged')
-Plug 'elmcast/elm-vim'
-Plug 'pgr0ss/vimux-ruby-test'
-Plug 'guns/vim-clojure-static'
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'ElmCast/elm-vim', {'commit': 'd22c0ba13afb554257a8c176962e2216cc18edd1'}
+Plug 'benmills/vimux', {'commit': '2285cefee9dfb2139ebc8299d11a6c8c0f21309e'} | Plug 'janko-m/vim-test', {'commit': '3d909e0190a35844aee4eb9684bf9eeecf70888f'}
+Plug 'bkad/CamelCaseMotion', {'commit': '3ae9bf93cce28ddc1f2776999ad516e153769ea4'}
+Plug 'cespare/vim-toml', {'commit': 'f6f79f3cc6740dfacca73a195857cbc45e778912'}
+Plug 'dense-analysis/ale', {'commit': 'dd1e1025b8a9b13cb7966bf2baa3e6b42a862857'}
+Plug 'elixir-editors/vim-elixir', {'commit': 'd51d5f7eb5c46992ac718ac648e02e38322e073e'}
+Plug 'fatih/vim-go', {'tag': 'v1.18', 'do': ':GoUpdateBinaries'}
+Plug 'felipesere/pie-highlight.vim', {'commit': 'b20999e9df5cbdbd00b506aae35655aa97f604db'}
+Plug 'gabrielelana/vim-markdown', {'commit': 'd18363153771bdd9c932a217611326c5ce4fd812'}
+Plug 'gleam-lang/gleam.vim', {'commit': 'fd4363c0363b856f74a1d6ad33e36b726091f8c6'}
+Plug 'idris-hackers/idris-vim', {'commit': '091ed6b267749927777423160eeab520109dd9c1'}
+Plug 'jparise/vim-graphql', {'tag': '1.1'}
+Plug 'junegunn/fzf', {'tag': '0.17.4', 'dir': '~/.fzf', 'do': './install --bin'} | Plug 'junegunn/fzf.vim', {'commit': 'ce82e10630830bc37a50f706cc3b7216d24e5009'}
+Plug 'junegunn/goyo.vim', {'tag': '1.6.0'}
+Plug 'leafgarland/typescript-vim', {'commit': '0e9d92eead2df21abe342c4341c55536dd36b0af'}
+Plug 'nanotech/jellybeans.vim', {'commit': '36f4f82bd7749928ba4e61a58b2e76effb6ecd66'}
+Plug 'neoclide/coc.nvim', {'commit': 'v0.0.74', 'for': ['purescript', 'typescript']}
+Plug 'neovimhaskell/haskell-vim', {'commit': 'b1ac46807835423c4a4dd063df6d5b613d89c731'}
+Plug 'pangloss/vim-javascript', {'tag': '1.2.5.1'}
+Plug 'purescript-contrib/purescript-vim', {'commit': '67ca4dc4a0291e5d8c8da48bffc0f3d2c9739e7f'}
+Plug 'rodjek/vim-puppet', {'commit': 'd881b93dc4a8ed1374ad44439aeeb47808a6b91a'}
+Plug 'rust-lang/rust.vim', {'commit': '8e75da9834abb22f8d7ece3f4ca4324a14fa18a6'}
+Plug 'scrooloose/nerdtree', {'tag': '5.0.0'}
+Plug 'tomtom/tcomment_vim', {'tag': '3.08'}
+Plug 'tpope/vim-endwise', {'commit': '0067ceda37725d01b7bd5bf249d63b1b5d4e2ab4', 'for': ['ruby']}
+Plug 'tpope/vim-fugitive', {'commit': '008b9570860f552534109b4f618cf2ddd145eeb4'}
+Plug 'tpope/vim-ragtag', {'commit': '0ef3f6a5778467fbca12b7874a4509593b209228'}
+Plug 'tpope/vim-rails', {'commit': 'abf87ba2ebe07e1a4112a7921c06842070ef2f81'}
+Plug 'udalov/kotlin-vim', {'commit': '0b0f27133319aaa83776855aeb32ac620eb99b3f'}
+Plug 'unisonweb/unison', {'commit': '5ca8523dacb79014364b5df67e3c148745d8fd56', 'rtp': 'editor-support/vim'}
+Plug 'vim-erlang/vim-erlang-runtime', {'commit': 'bafee7c69b23cc2923fda9ac16d6f83433645f30'}
+Plug 'vim-ruby/vim-ruby', {'commit': '666adb5bcdfb2d21572a58fcdf7545a26bac32a0'}
+Plug 'vim-scripts/indentpython.vim', {'commit': '6aaddfde21fe9e7acbe448b92b3cbb67f2fe1fc1'}
+Plug 'vim-scripts/matchit.zip', {'tag': '1.9'}
+Plug 'wlangstroth/vim-racket', {'commit': '164d93736d5cee79c77d4a8a3f722ef31d8d2f4c'}
+
 call plug#end()
 
-" First, get pathogen set up
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+set updatetime=300
+set background=dark
+set backspace=indent,eol,start
+set completeopt-=preview
+set dir=/tmp//
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set isk+=?
+set mouse=
+set nofoldenable
+set number
+set ruler
+set scrolloff=5
+set showmatch
+set smartcase
+set textwidth=0 nosmartindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+set wildignore+=*.pyc,*.o,*.class
+set wrap
 
-set nocompatible                  " Must come first because it changes other options.
+colorscheme jellybeans
 
-syntax enable                     " Turn on syntax highlighting.
-filetype plugin indent on         " Turn on file type detection.
+autocmd BufNewFile,BufRead *.md,*.markdown setlocal textwidth=80 spell
+autocmd BufNewFile,BufRead *.txt setlocal textwidth=80 spell
+autocmd FileType go setlocal noexpandtab
+autocmd FileType kotlin setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType rust setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType tex setlocal textwidth=80 spell
 
-runtime macros/matchit.vim        " Load the matchit plugin.
-
-set showcmd                       " Display incomplete commands.
-set showmode                      " Display the mode you're in.
-
-set backspace=indent,eol,start    " Intuitive backspacing.
-
-set hidden                        " Handle multiple buffers better.
-
-set wildmenu                      " Enhanced command line completion.
-set wildmode=list:longest         " Complete files like a shell.
-
-set ignorecase                    " Case-insensitive searching.
-set smartcase                     " But case-sensitive if expression contains a capital letter.
-
-set number                        " Absolute line number on current line.
-set ruler                         " Show cursor position.
-
-set incsearch                     " Highlight matches as you type.
-set hlsearch                      " Highlight matches.
-
-set wrap                          " Turn on line wrapping.
-set scrolloff=3                   " Show 3 lines of context around the cursor.
-
-set title                         " Set the terminal's title
-
-set visualbell                    " No beeping.
-
-set nobackup                      " Don't make a backup before overwriting a file.
-set nowritebackup                 " And again.
-set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
-
-set tabstop=4                    " Global tab width.
-set shiftwidth=4                 " And again, related.
-set expandtab                    " Use spaces instead of tabs
-
-" Filetypes that require only two spaces for tabs
-autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType eruby setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-
-set laststatus=2                  " Show the status line all the time
-" Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-
-" Lightline config
-set noshowmode
-let g:lightline = {
-  \ 'colorscheme': 'Tomorrow_Night',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'fugitive#head'
-  \ },
-  \ }
-
-" Tmuxline config
-let g:tmuxline_powerline_separators = 0
-
-" Set color scheme
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+function! GitGrepWord()
+  cgetexpr system("git grep -n '" . expand("<cword>") . "'")
+  cwin
+  echo 'Number of matches: ' . len(getqflist())
 endfunction
-inoremap <expr> <tab> InsertTabWrapper()
-inoremap <s-tab> <c-n>
+command! -nargs=0 GitGrepWord :call GitGrepWord()
+nnoremap <silent> <Leader>gw :GitGrepWord<CR>
 
-" Fast saving
-nnoremap <leader>w :w!<cr>
-" inoremap jj <esc>:w!<cr>
+let html_use_css=1
+let html_number_lines=0
+let html_no_pre=1
 
-" Tab mappings.
-" map <leader>tt :tabnew<cr>
-" map <leader>te :tabedit
-" map <leader>tc :tabclose<cr>
-" map <leader>to :tabonly<cr>
-" map <leader>tn :tabnext<cr>
-" map <leader>tp :tabprevious<cr>
-" map <leader>tf :tabfirst<cr>
-" map <leader>tl :tablast<cr>
-" map <leader>tm :tabmove
+let g:rubycomplete_buffer_loading = 1
 
-" NERDTree
-nnoremap <leader>nt :NERDTree<cr>
+let g:no_html_toolbar = 'yes'
 
-" Split navigation
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-h> <c-w><c-h>
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$', '\.ibc$', '\.idr\~$']
 
-"Remove all trailing whitespace by pressing <leader>cw
-nnoremap <leader>cw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+let $FZF_DEFAULT_COMMAND = 'find * -type f 2>/dev/null | grep -v -E "deps\/|_build\/|node_modules\/|vendor\/|build_intellij\/"'
+let $FZF_DEFAULT_OPTS = '--reverse'
+let g:fzf_tags_command = 'ctags -R --exclude=".git" --exclude="node_modules" --exclude="vendor" --exclude="log" --exclude="tmp" --exclude="db" --exclude="pkg" --exclude="deps" --exclude="_build" --extra=+f .'
 
-" Turn off search highlighting
-nnoremap <silent> <leader>nh :noh<cr>
+let g:test#strategy = 'vimux'
+let g:test#preserve_screen = 0
+let g:test#python#nose#file_pattern = '_test\.py\|test_.*\.py'
+let g:test#python#runner = 'nose'
 
-set splitbelow
-set splitright
+let g:VimuxOrientation = 'h'
+let g:VimuxHeight = '40'
 
-" Vim Hard Time Settings
-let g:hardtime_default_on = 0
+let g:go_template_autocreate = 0
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
-" FZF
-set rtp+=/usr/local/opt/fzf
-imap <c-x><c-o> <plug>(fzf-complete-line)
-map <leader>b :Buffers<cr>
-map <leader>ff :Files<cr>
-map <leader>g :GFiles<cr>
-map <leader>t :Tags<cr>
-
-" vim-jsx
-let g:jsx_ext_required = 0  " Use JSX syntax highlighting on file extensions with .js
-
-" Vimux
-map <leader>rf :RunRubyFocusedTest<CR>
-map <leader>rc :RunRubyFocusedContext<CR>
-map <leader>rb :RunAllRubyTests<CR>
-map <leader>rl :VimuxRunLastCommand<CR>
-
-" Ale
-let g:ale_fixers = {
-\   'javascript': ['prettier_eslint'],
+let g:ale_linters = {
+\   'rust': ['rustc', 'cargo'],
+\   'go': ['gobuild'],
+\   'ruby': ['ruby'],
+\   'haskell': ['ghc', 'stack_ghc'],
+\   'idris': ['idris'],
+\   'elixir': ['mix'],
 \}
-let g:ale_lint_on_save = 1
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'elixir': ['mix_format'],
+\   'go': ['gofmt', 'goimports'],
+\   'haskell': ['stylish-haskell'],
+\   'rust': ['rustfmt'],
+\}
+
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 0
+let g:ale_linters_explicit = 1
 
-" Neoformatter
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --tab-width\ 4\ --print-width\ 120
-let g:neoformat_try_formatprg = 1
-map <Leader>p :Neoformat<cr>
+let ls_langs = 'purescript,typescript'
+execute 'autocmd Filetype ' . ls_langs . ' inoremap <silent><expr> <C-X><C-O> coc#refresh()'
+execute 'autocmd Filetype ' . ls_langs . ' nmap <C-]> <Plug>(coc-definition)'
+execute 'autocmd Filetype ' . ls_langs . ' nnoremap <silent> K :call CocAction(''doHover'')<CR>'
 
+let purescript_indent_case = 2
+let purescript_indent_where = 2
+let purescript_indent_do = 2
 
-" Custom test functions
-function! TestCurrentReactBuffer()
-    let path = expand('%:p')
-    let filename = substitute(path, "test\.", "", "")
-    execute "!npm test " . path . " -- --coverage --collectCoverageFrom=\'[\"" . filename . "\"]\'"
-endfunction
+nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>
+nnoremap <silent> <leader>rb :wa<CR>:TestFile<CR>
+nnoremap <silent> <leader>ra :wa<CR>:TestSuite<CR>
+nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
 
-" Testing in Clojure
-function! TestToplevel() abort
-    "Eval the toplevel clojure form (a deftest) and then test-var the result."
-    normal! ^
-    let line1 = searchpair('(','',')', 'bcrn', g:fireplace#skip)
-    let line2 = searchpair('(','',')', 'rn',
-    g:fireplace#skip)
-    let expr = join(getline(line1, line2), "\n")
-    let var = fireplace#session_eval(expr)
-    let result = fireplace#echo_session_eval("(clojure.test/test-var" . var . ")")
-    return result
-endfunction
+imap <C-L> <SPACE>=><SPACE>
+map <silent> <LocalLeader>rt :!ctags -R --exclude=".git" --exclude="node_modules" --exclude="vendor" --exclude="log" --exclude="tmp" --exclude="db" --exclude="pkg" --exclude="deps" --exclude="_build" --extra=+f .<CR>
+map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
+map <silent> <LocalLeader>nf :NERDTreeFind<CR>
+map <silent> <leader>ff :Files<CR>
+map <silent> <leader>fg :GFiles<CR>
+map <silent> <leader>fb :Buffers<CR>
+map <silent> <leader>ft :Tags<CR>
+map <silent> <LocalLeader>nh :nohls<CR>
+map <silent> <LocalLeader>cc :TComment<CR>
 
-au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
+nnoremap <silent> k gk
+nnoremap <silent> j gj
+nnoremap <silent> Y y$
 
-" Hot reload code into the JVM
-au Filetype clojure nmap <c-c><c-k> :Require<cr>
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 
-" Elm
-let g:elm_jump_to_error = 0
-let g:elm_make_output_file = "elm.js"
-let g:elm_make_show_warnings = 0
-let g:elm_syntastic_show_warnings = 0
-let g:elm_browser_command = ""
-let g:elm_detailed_complete = 0
-let g:elm_format_autosave = 1
-let g:elm_format_fail_silently = 0
-let g:elm_setup_keybindings = 1
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
+set laststatus=2
+
+set statusline=
+set statusline+=%<\                       " cut at start
+set statusline+=%2*[%n%H%M%R%W]%*\        " buffer number, and flags
+set statusline+=%-40f\                    " relative path
+
+set statusline+=%=                        " seperate between right- and left-aligned
+set statusline+=%1*%y%*%*\                " file type
+set statusline+=%10(L(%l/%L)%)\           " line
+set statusline+=%2(C(%v/125)%)\           " column
+set statusline+=%P                        " percentage of file
+
+set undodir=~/.vim/undodir
+set undofile
+set undoreload=10000
