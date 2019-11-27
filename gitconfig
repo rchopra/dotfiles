@@ -7,7 +7,7 @@
     ui = auto
 
 [core]
-	excludesfile = ~/.cvsignore
+	excludesfile = /Users/rishi/.gitignore
 	autocrlf = input
 	safecrlf = false
     commentChar = auto
