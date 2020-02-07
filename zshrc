@@ -1,5 +1,5 @@
 # Set custom prompt
-setopt PROMPT_SUBST 
+setopt PROMPT_SUBST
 autoload -U promptinit
 promptinit
 prompt grb
@@ -54,6 +54,9 @@ alias gd='git diff'
 alias gco='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
+alias gci='commit-helper'
+alias gr='git r'
+alias gl='git l'
 
 alias got='git '
 alias get='git '
@@ -84,7 +87,7 @@ alias get='git '
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"

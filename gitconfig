@@ -11,6 +11,7 @@
 	autocrlf = input
 	safecrlf = false
     commentChar = auto
+	pager = less -F -X
 
 [alias]
     co = checkout
@@ -26,6 +27,12 @@
     la = !git l --all
     r = !git l -30
     ra = !git r --all
+	switch = !/usr/local/bin/legit switch
+	sync = !/usr/local/bin/legit sync
+	publish = !/usr/local/bin/legit publish
+	unpublish = !/usr/local/bin/legit unpublish
+	undo = !/usr/local/bin/legit undo
+	branches = !/usr/local/bin/legit branches
 
 [merge]
     tool = vimdiff
