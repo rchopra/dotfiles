@@ -122,3 +122,7 @@ export NVM_DIR="$HOME/.nvm"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 ctags=/usr/local/bin/ctags
+
+export RUBYOPT='-W:no-deprecated -W:no-experimental'
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
