@@ -9,7 +9,7 @@ autoload -U compinit
 compinit
 
 # Add paths
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/usr/local/share/scala/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:/usr/local/smlnj/bin"
+export PATH="/Users/rishi/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/usr/local/share/scala/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:/usr/local/smlnj/bin"
 
 # Colorize terminal
 alias ls='ls -G'
@@ -26,7 +26,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 # Fix tmux bug
 DISABLE_AUTO_TITLE=true
 
-export EDITOR="vim"
+export EDITOR="nvim"
 bindkey -e
 
 #vi style incremental search
@@ -45,6 +45,7 @@ setopt AUTO_CD
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias git=hub
 alias g='git '
 alias gt='git status '
 alias ga='git add '
@@ -60,6 +61,13 @@ alias gl='git l'
 
 alias got='git '
 alias get='git '
+
+export GIT_AUTHOR_NAME="Rishi Chopra"
+export GIT_AUTHOR_EMAIL="rqchopra@gmail.com"
+
+alias be='bundle exec'
+alias tunnel_airflow='ssh -v -N -A -J giants-bastion -L 8080:localhost:8080 airflow'
+alias inflate='ruby -r zlib -e "STDOUT.write Zlib::Inflate.inflate(STDIN.read)"'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -126,3 +134,10 @@ ctags=/usr/local/bin/ctags
 export RUBYOPT='-W:no-deprecated -W:no-experimental'
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+set TERM=xterm-256color
+
+# IEx
+export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 2097152"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
