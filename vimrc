@@ -1,5 +1,5 @@
 set nocompatible
-syntax on
+syntax enable
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -18,7 +18,7 @@ Plug 'jparise/vim-graphql', {'tag': '1.1'}
 Plug 'junegunn/fzf', {'tag': '0.17.4', 'dir': '~/.fzf', 'do': './install --bin'} | Plug 'junegunn/fzf.vim', {'commit': 'ce82e10630830bc37a50f706cc3b7216d24e5009'}
 Plug 'junegunn/goyo.vim', {'tag': '1.6.0'}
 Plug 'leafgarland/typescript-vim', {'commit': '0e9d92eead2df21abe342c4341c55536dd36b0af'}
-Plug 'neoclide/coc.nvim', {'commit': 'v0.0.74', 'for': ['purescript', 'typescript']}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovimhaskell/haskell-vim', {'commit': 'b1ac46807835423c4a4dd063df6d5b613d89c731'}
 Plug 'pangloss/vim-javascript', {'tag': '1.2.5.1'}
 Plug 'purescript-contrib/purescript-vim', {'commit': '67ca4dc4a0291e5d8c8da48bffc0f3d2c9739e7f'}
@@ -37,9 +37,27 @@ Plug 'vim-ruby/vim-ruby', {'commit': '666adb5bcdfb2d21572a58fcdf7545a26bac32a0'}
 Plug 'vim-scripts/indentpython.vim', {'commit': '6aaddfde21fe9e7acbe448b92b3cbb67f2fe1fc1'}
 Plug 'vim-scripts/matchit.zip', {'tag': '1.9'}
 Plug 'wlangstroth/vim-racket', {'commit': '164d93736d5cee79c77d4a8a3f722ef31d8d2f4c'}
+Plug 'vim-latex/vim-latex'
 Plug 'rakr/vim-one'
+Plug 'rakr/vim-two-firewatch'
 Plug 'takac/vim-hardtime'
 Plug 'hashivim/vim-terraform'
+Plug 'crusoexia/vim-monokai'
+Plug 'nightsense/snow'
+Plug 'junegunn/seoul256.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'mhartington/oceanic-next'
+Plug 'kaicataldo/material.vim'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fireplace'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'vim-test/vim-test'
+Plug 'kassio/neoterm'
+Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -89,7 +107,7 @@ let g:rubycomplete_buffer_loading = 1
 
 let g:no_html_toolbar = 'yes'
 
-let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$', '\.ibc$', '\.idr\~$']
+let NERDTreeIgnore=['\.pyc$', '__pycache__', '\.o$', '\.class$', '\.ibc$', '\.idr\~$']
 
 let $FZF_DEFAULT_COMMAND = 'find * -type f 2>/dev/null | grep -v -E "deps\/|_build\/|node_modules\/|vendor\/|build_intellij\/"'
 let $FZF_DEFAULT_OPTS = '--reverse'
@@ -119,6 +137,9 @@ let g:ale_linters = {
 \   'haskell': ['ghc', 'stack_ghc'],
 \   'idris': ['idris'],
 \   'elixir': ['mix'],
+\   'python': ['black'],
+\   'java': ['google_java_format'],
+\   'javascript': ['eslint']
 \}
 
 let g:ale_fixers = {
@@ -127,10 +148,14 @@ let g:ale_fixers = {
 \   'go': ['gofmt', 'goimports'],
 \   'haskell': ['stylish-haskell'],
 \   'rust': ['rustfmt'],
+\   'python': ['black'],
+\   'java': ['google_java_format'],
+\   'javascript': ['prettier', 'eslint'],
+\   'css': ['prettier']
 \}
 
-let g:ale_fix_on_save = 1
 let g:ale_lint_on_insert_leave = 1
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_linters_explicit = 1
 
@@ -145,10 +170,10 @@ let g:terraform_fmt_on_save=1
 
 runtime macros/matchit.vim
 
-let ls_langs = 'purescript,typescript'
+let ls_langs = 'elixir,java,purescript,typescript'
 execute 'autocmd Filetype ' . ls_langs . ' inoremap <silent><expr> <C-X><C-O> coc#refresh()'
-execute 'autocmd Filetype ' . ls_langs . ' nmap <C-]> <Plug>(coc-definition)'
-execute 'autocmd Filetype ' . ls_langs . ' nnoremap <silent> K :call CocAction(''doHover'')<CR>'
+execute 'autocmd Filetype ' . ls_langs . ' nmap <C-]> :call CocActionAsync(''jumpDefinition'')<CR>'
+execute 'autocmd Filetype ' . ls_langs . ' nnoremap <silent> K :call CocActionAsync(''doHover'')<CR>'
 
 let purescript_indent_case = 2
 let purescript_indent_where = 2
@@ -159,7 +184,11 @@ nnoremap <silent> <leader>rb :wa<CR>:TestFile<CR>
 nnoremap <silent> <leader>ra :wa<CR>:TestSuite<CR>
 nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
 
+" symbol shortcuts
 imap <C-L> <SPACE>=><SPACE>
+imap <C-Q> <SPACE>\|><SPACE>
+imap <C-S> <SPACE>-><SPACE>
+
 map <silent> <LocalLeader>rt :!ctags -R --exclude=".git" --exclude="node_modules" --exclude="vendor" --exclude="log" --exclude="tmp" --exclude="db" --exclude="pkg" --exclude="deps" --exclude="_build" --extra=+f .<CR>
 map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
 map <silent> <LocalLeader>nf :NERDTreeFind<CR>
@@ -182,8 +211,11 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 nnoremap <silent> <leader>cw :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
-colorscheme one
-set background=dark " for the dark version
+" For Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+colorscheme base16-eighties
 
 set laststatus=2
 
@@ -201,3 +233,10 @@ set statusline+=%P                        " percentage of file
 set undodir=~/.vim/undodir
 set undofile
 set undoreload=10000
+
+
+" Elixir Matchit settings
+autocmd FileType elixir let b:match_words = '\<\%(case\|cond\|if\|unless\|try\|loop\|receive\|fn\|' .
+      \ 'defmodule\|defimpl\|defmacro\|defdelegate\|defexception\|defcallback\|defoverridable\|defp\|def\|test\)\>=\@!:' .
+      \ '\<\%(else\|elsif\|catch\|after\|rescue\)\>:' .
+      \ '\<end\>,{:},\[:\],(:)'

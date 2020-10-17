@@ -13,6 +13,11 @@
     "autoTrigger": "none"
   },
   "languageserver": {
+    "elixir": {
+      "command": "~/dotfiles/vim/elixir-ls/release/language_server.sh",
+      "filetypes": ["elixir", "eelixir"],
+      "rootPatterns": ["mix.exs"]
+    },
     "purescript": {
       "command": "/usr/local/bin/purescript-language-server",
       "args": ["--stdio"],
@@ -32,5 +37,6 @@
       "filetypes": ["typescript"],
       "rootPatterns": ["tsconfig.json", "package.json"]
     }
-  }
+  },
+  "java.format.settings.url": "/Users/rishi/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
 }
