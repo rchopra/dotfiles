@@ -25,6 +25,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 DISABLE_AUTO_TITLE=true
 
 export EDITOR="nvim"
+alias vi="nvim"
 bindkey -e
 
 #vi style incremental search
@@ -35,25 +36,11 @@ bindkey '^N' history-search-forward
 
 setopt AUTO_CD
 
-alias g='git '
-alias gt='git status '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit'
-alias gd='git diff'
-alias gco='git checkout '
-alias gk='gitk --all&'
-alias gx='gitx --all'
-alias gci='commit-helper'
-alias gr='git r'
-alias gl='git l'
-
-alias got='git '
-alias get='git '
-
 export GIT_AUTHOR_NAME="Rishi Chopra"
 export GIT_AUTHOR_EMAIL="rqchopra@gmail.com"
 
+# Convenient aliases
+alias g='git '
 alias be='bundle exec'
 alias tunnel_airflow='ssh -v -N -A -J giants-bastion -L 8080:localhost:8080 airflow'
 
@@ -64,3 +51,9 @@ set TERM=xterm-256color
 
 # Set GEM_HOME for Ruby gems
 export GEM_HOME="$HOME/.gem"
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
