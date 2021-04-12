@@ -47,15 +47,18 @@ nnoremap <silent> <leader>cw :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar
 
 " Language-specific settings
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal textwidth=80 spell
+autocmd FileType go setlocal noexpandtab
 
 " Normal Mode Shortcuts
 map <silent> <LocalLeader>nh :nohls<CR>
 
 " Ale settings
 let g:ale_linters = {
+\   'go': ['gobuild'],
 \   'ruby': ['ruby']
 \}
 let g:ale_fixers = {
+\   'go': ['gofmt', 'goimports'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace']
 \}
 let g:ale_lint_on_insert_leave=1
