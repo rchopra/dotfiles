@@ -54,6 +54,7 @@ map <silent> <LocalLeader>nh :nohls<CR>
 
 " Ale settings
 let g:ale_linters = {
+\   'c': ['clangd'],
 \   'go': ['gobuild'],
 \   'ruby': ['ruby']
 \}
