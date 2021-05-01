@@ -59,7 +59,7 @@ let g:ale_linters = {
 \   'ruby': ['ruby']
 \}
 let g:ale_fixers = {
-\   'go': ['gofmt', 'goimports'],
+\   'go': ['goimports'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace']
 \}
 let g:ale_lint_on_insert_leave=1
