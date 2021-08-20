@@ -36,9 +36,6 @@ bindkey '^N' history-search-forward
 
 setopt AUTO_CD
 
-export GIT_AUTHOR_NAME="Rishi Chopra"
-export GIT_AUTHOR_EMAIL="rqchopra@gmail.com"
-
 # Convenient aliases
 alias g='git '
 alias be='bundle exec'
@@ -63,4 +60,31 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 . /opt/homebrew/opt/asdf/asdf.sh
 
 # Go settings
+export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/Users/rishi/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/Users/rishi/miniforge3/etc/profile.d/conda.sh" ]; then
+#        . "/Users/rishi/miniforge3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/Users/rishi/miniforge3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+## <<< conda initialize <<<
+
+# Airflow
+alias Rscript='/Library/Frameworks/R.framework/Versions/4.0/Resources/Rscript'
+export AIRFLOW_HOME="~/airflow"
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # otherwise macOS won't let you fork
+
+
+# For Building Git book
+alias inflate='ruby -r zlib -e "STDOUT.write Zlib::Inflate.inflate(STDIN.read)"'
+export GIT_AUTHOR_NAME="Rishi Chopra"
+export GIT_AUTHOR_EMAIL="rqchopra@gmail.com"
