@@ -8,7 +8,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'chriskempson/base16-vim'
+Plug 'ray-x/material_plus.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " Configure defaults
@@ -52,20 +56,66 @@ autocmd FileType go setlocal noexpandtab
 " Normal Mode Shortcuts
 map <silent> <LocalLeader>nh :nohls<CR>
 
+lua << EOF
+require'lspconfig'.gopls.setup{}
+-- nvim-lspconfig Settings
+require'nvim-treesitter.install'.compilers = {'clang++'}
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = {
+    enable = true
+  },
+}
+EOF
+
+" compe settings
+" set completeopt=menuone,noselect
+" let g:compe = {}
+" let g:compe.enabled = v:true
+" let g:compe.autocomplete = v:true
+" let g:compe.debug = v:false
+" let g:compe.min_length = 1
+" let g:compe.preselect = 'enable'
+" let g:compe.throttle_time = 80
+" let g:compe.source_timeout = 200
+" let g:compe.resolve_timeout = 800
+" let g:compe.incomplete_delay = 400
+" let g:compe.max_abbr_width = 100
+" let g:compe.max_kind_width = 100
+" let g:compe.max_menu_width = 100
+" let g:compe.documentation = v:true
+"
+" let g:compe.source = {}
+" let g:compe.source.path = v:true
+" let g:compe.source.buffer = v:true
+" let g:compe.source.calc = v:true
+" let g:compe.source.nvim_lsp = v:true
+" let g:compe.source.nvim_lua = v:true
+" let g:compe.source.vsnip = v:true
+" let g:compe.source.ultisnips = v:true
+
+
 " Ale settings
 let g:ale_linters = {
 \   'c': ['clangd'],
 \   'go': ['gobuild'],
+\   'python': ['flake8'],
 \   'ruby': ['ruby']
 \}
 let g:ale_fixers = {
+\   'css': ['prettier'],
 \   'go': ['goimports'],
+\   'javascript': ['prettier'],
+\   'python': ['black'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace']
 \}
 let g:ale_lint_on_insert_leave=1
 let g:ale_fix_on_save=1
 let g:ale_lint_on_text_changed=0
 let g:ale_linters_explicit=1
+
+" Omnicomplete for golang on '.' in insert mode
+" au filetype go inoremap <buffer> . .<C-x><C-o>
 
 " Vimux and vim-test settings
 let g:VimuxOrientation = 'h'
@@ -83,8 +133,10 @@ map <silent> <LocalLeader>nf :NERDTreeFind<CR>
 
 " Themes and colors
 set background=dark
+" let material_style = 'mariana'
+" let material_style_fix = v:true
 let base16colorspace=256     " Access colors present in 256 colorspace
-colorscheme base16-eighties
+colorscheme base16-tomorrow-night
 
 " Status line
 set statusline=
