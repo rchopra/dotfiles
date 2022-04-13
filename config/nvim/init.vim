@@ -7,12 +7,16 @@ Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'chriskempson/base16-vim'
-Plug 'ray-x/material_plus.nvim'
+Plug 'RRethy/nvim-base16'
 Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'phanviet/vim-monokai-pro'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+"Plug 'hrsh7th/nvim-compe'
+"Plug 'sthendev/mariana.vim', { 'do': 'make' }
+Plug 'joshdick/onedark.vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " Configure defaults
@@ -57,15 +61,15 @@ autocmd FileType go setlocal noexpandtab
 map <silent> <LocalLeader>nh :nohls<CR>
 
 lua << EOF
-require'lspconfig'.gopls.setup{}
--- nvim-lspconfig Settings
-require'nvim-treesitter.install'.compilers = {'clang++'}
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  highlight = {
-    enable = true
-  },
-}
+-- require'lspconfig'.gopls.setup{}
+-- -- nvim-lspconfig Settings
+-- require'nvim-treesitter.install'.compilers = {'clang++'}
+-- require'nvim-treesitter.configs'.setup {
+--   ensure_installed = "all",
+--   highlight = {
+--     enable = true
+--   },
+-- }
 EOF
 
 " compe settings
@@ -105,6 +109,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'go': ['goimports'],
+\   'java': ['google_java_format'],
 \   'javascript': ['prettier'],
 \   'python': ['black'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace']
@@ -113,6 +118,7 @@ let g:ale_lint_on_insert_leave=1
 let g:ale_fix_on_save=1
 let g:ale_lint_on_text_changed=0
 let g:ale_linters_explicit=1
+let g:ale_java_javac_classpath='src/'
 
 " Omnicomplete for golang on '.' in insert mode
 " au filetype go inoremap <buffer> . .<C-x><C-o>
@@ -133,10 +139,12 @@ map <silent> <LocalLeader>nf :NERDTreeFind<CR>
 
 " Themes and colors
 set background=dark
-" let material_style = 'mariana'
-" let material_style_fix = v:true
-let base16colorspace=256     " Access colors present in 256 colorspace
-colorscheme base16-tomorrow-night
+" let base16colorspace=256     " Access colors present in 256 colorspace
+if (has("termguicolors"))
+  set termguicolors
+endif
+colorscheme onedark
+"colorscheme base16-eighties
 
 " Status line
 set statusline=
